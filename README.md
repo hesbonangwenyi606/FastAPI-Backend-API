@@ -1,41 +1,35 @@
-# FastAPI Backend API
+FastAPI Backend API
 
-A RESTful backend API built with **FastAPI**, integrating **PostgreSQL**, **SQLAlchemy**, and **Pydantic**.  
-This project is designed to demonstrate backend development best practices — including authentication, CRUD operations, and database models.
+A RESTful backend API built with FastAPI, integrating PostgreSQL, SQLAlchemy, and Pydantic.
+This project demonstrates backend development best practices — including authentication, CRUD operations, and database models.
 
-## Tech Stack
+Tech Stack
 
-- **FastAPI** — High-performance web framework for building APIs
-- **PostgreSQL** — Relational database
-- **SQLAlchemy** — ORM for database models
-- **Pydantic** — Data validation and settings management
-- **Uvicorn** — ASGI server for running FastAPI apps
+FastAPI — High-performance web framework for APIs
 
-## Setup Instructions
+PostgreSQL — Relational database
 
-### 1. Clone the repository
-git clone https://github.com/hesbonangwenyi606/FastAPI-Backend-API.git
-cd FastAPI-Backend-API
+SQLAlchemy — ORM for database models
 
-**2. Create a virtual environment**
-python -m venv venv
-source venv/bin/activate   # On Linux or macOS
-venv\Scripts\activate      # On Windows
-**3. Install dependencies**
-pip install -r requirements.txt
+Pydantic — Data validation and settings management
 
-**4. Set up environment variables**
-Create a .env file in the project root based on the example below:
+Uvicorn — ASGI server to run FastAPI apps
 
-DATABASE_URL=postgresql://username:password@localhost/db_name
-SECRET_KEY=your-secret-key
-Alternatively, you can copy the example:
-cp .env.example .env
+Docker & Docker Compose — Containerized environment
 
-**5. Run the development server**
-uvicorn app.main:app --reload
+Features
 
-**Project Structure**
+CRUD operations for users and other entities
+
+JWT authentication and authorization
+
+Data validation with Pydantic schemas
+
+PostgreSQL database integration
+
+Auto-generated API docs via Swagger UI and ReDoc
+
+Project Structure
 FastAPI-Backend-API/
 │
 ├── app/
@@ -47,21 +41,67 @@ FastAPI-Backend-API/
 │
 ├── .env.example         # Example environment variables
 ├── requirements.txt     # Python dependencies
-├── README.md            # Documentation
+├── Dockerfile           # Docker image build instructions
+├── docker-compose.yml   # Docker Compose stack
+├── README.md            # Project documentation
 └── .gitignore           # Git ignore rules
 
-**API Docs**
-Once running, visit:
-Swagger UI → http://127.0.0.1:8000/docs
+Setup Instructions
+1. Clone the repository
+git clone https://github.com/hesbonangwenyi606/FastAPI-Backend-API.git
+cd FastAPI-Backend-API
 
-ReDoc → http://127.0.0.1:8000/redoc
+2. Create a virtual environment
+python -m venv venv
+source venv/bin/activate   # Linux/macOS
+venv\Scripts\activate      # Windows
 
-**Example Request**
+3. Install dependencies
+pip install -r requirements.txt
+
+4. Set up environment variables
+
+Create a .env file in the project root (copy from example):
+
+cp .env.example .env
+
+
+Example .env:
+
+DATABASE_URL=postgresql://username:password@localhost/db_name
+SECRET_KEY=your-secret-key
+
+Running the Server
+Development (local)
+uvicorn app.main:app --reload
+
+
+Swagger UI: http://127.0.0.1:8000/docs
+
+ReDoc: http://127.0.0.1:8000/redoc
+
+Docker (recommended)
+
+Build and start services:
+
+docker compose up -d --build
+
+
+Follow logs:
+
+docker compose logs -f
+
+
+Stop services:
+
+docker compose down
+
+Example API Request
+
 GET /api/users
+
 Response:
 
-json
-Copy code
 [
   {
     "id": 1,
@@ -69,21 +109,33 @@ Copy code
     "email": "hesbon@example.com"
   }
 ]
-## Contributing
-Fork the repo
-Create a new branch (git checkout -b feature-branch)
-Commit your changes (git commit -m 'Add new feature')
-Push to the branch (git push origin feature-branch)
+
+Contributing
+
+Fork the repository
+
+Create a new branch:
+
+git checkout -b feature-branch
+
+
+Commit your changes:
+
+git commit -m 'Add new feature'
+
+
+Push to your branch:
+
+git push origin feature-branch
+
+
 Open a Pull Request
 
 License
+
 This project is open-source and available under the MIT License.
 
-yaml
-
-##**.gitignore**
-
-```gitignore
+.gitignore
 # Virtual environment
 venv/
 ENV/
